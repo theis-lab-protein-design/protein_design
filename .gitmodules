@@ -4,3 +4,6 @@
 [submodule "RFdiffusion"]
 	path = RFdiffusion
 	url = https://github.com/RosettaCommons/RFdiffusion.git
+[submodule "openfold"]
+	path = openfold
+	url = https://github.com/aqlaboratory/openfold.git
