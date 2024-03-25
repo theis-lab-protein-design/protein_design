@@ -6,7 +6,7 @@
 	url = https://github.com/RosettaCommons/RFdiffusion.git
 [submodule "openfold"]
 	path = modules/openfold
-	url = https://github.com/aqlaboratory/openfold.git
+	url = "https://github.com/B1RO/openfold.git"
 [submodule "ESM"]
 	path = modules/ESM
 	url = https://github.com/facebookresearch/esm.git
