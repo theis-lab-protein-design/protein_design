@@ -1,12 +1,12 @@
 [submodule "ProteinMPNN"]
-	path = ProteinMPNN
+	path = modules/ProteinMPNN
 	url = https://github.com/dauparas/ProteinMPNN
 [submodule "RFdiffusion"]
-	path = RFdiffusion
+	path = modules/RFdiffusion
 	url = https://github.com/RosettaCommons/RFdiffusion.git
 [submodule "openfold"]
-	path = openfold
+	path = modules/openfold
 	url = https://github.com/aqlaboratory/openfold.git
 [submodule "ESM"]
-	path = ESM
+	path = modules/ESM
 	url = https://github.com/facebookresearch/esm.git
