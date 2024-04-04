@@ -19,7 +19,9 @@ fi
 
 
 # Now that Conda is initialized in the current session, you can proceed with the rest
-mamba env create -y environment.yml
+mamba create -y -n leonoviny_env python=3.9
+mamba env update -n leonoviny_env --file environment.yml
 mamba activate leonoviny_env
 # pip install -e ./modules/ESM
 # pip install -e ./modules/openfold
+
