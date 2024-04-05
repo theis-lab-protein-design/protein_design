@@ -25,3 +25,9 @@ mamba activate leonoviny_env
 # pip install -e ./modules/ESM
 # pip install -e ./modules/openfold
 
+#RF diffusion setup
+chmod +x download_rf_diffusion.sh  
+./download_rf_diffusion.sh
+cd modules/RFdiffusion/env/SE3Transformer/setup.py
+cd ../..
+pip install -e .
