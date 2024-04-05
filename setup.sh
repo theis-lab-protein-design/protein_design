@@ -28,6 +28,7 @@ mamba activate leonoviny_env
 #RF diffusion setup
 chmod +x download_rf_diffusion.sh  
 ./download_rf_diffusion.sh
-cd modules/RFdiffusion/env/SE3Transformer/setup.py
+cd modules/RFdiffusion/env/SE3Transformer/ 
+python setup.py install
 cd ../..
 pip install -e .
