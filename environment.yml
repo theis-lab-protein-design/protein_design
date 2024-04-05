@@ -16,7 +16,7 @@ dependencies:
   - bioconda::hhsuite==3.3.0
   - bioconda::kalign2==2.04
   - pytorch::pytorch=1.12.*
-  - dgl-cuda11.3
+  - dglteam::dgl-cuda11.3
   - pip:
       - e3nn==0.3.3
       - biopython==1.79
