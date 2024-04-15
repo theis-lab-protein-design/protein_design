@@ -1,29 +1,17 @@
 git submodule update --init --recursive
-if ! command -v conda &> /dev/null
-then
-    mkdir -p ~/miniconda3
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-    bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-    rm -rf ~/miniconda3/miniconda.sh
-    ~/miniconda3/bin/conda init bash
-
-    # Source the shell initialization script to apply Conda changes immediately
-    # Adjust the path to the initialization script if necessary
-    source ~/.bashrc
-fi
-
 if ! command -v mamba &> /dev/null
 then
-    conda install -y -n base --override-channels -c conda-forge mamba 'python_abi=*=*cp*'
+    echo "Mamba is not installed. Please install Mamba to continue."
+    exit 1
 fi
 
 
-# Now that Conda is initialized in the current session, you can proceed with the rest
-mamba create -y -n leonoviny_env python=3.9
-mamba env update -n leonoviny_env --file environment.yml
-mamba activate leonoviny_env
-# pip install -e ./modules/ESM
-# pip install -e ./modules/openfold
+mamba create -y -n protein_design_env python=3.9
+mamba env update -n protein_design_env --file environment3.yml
+mamba activate protein_design_env
+pip install -e ./modules/openfold
+pip install -e ./modules/ESM
+
 
 #RF diffusion setup
 chmod +x download_rf_diffusion.sh  
@@ -32,3 +20,7 @@ cd modules/RFdiffusion/env/SE3Transformer/
 python setup.py install
 cd ../..
 pip install -e .
+cd ../..
+
+# bash scripts/download_alphafold_dbs.sh data/
+bash scripts/download_openfold_params.sh openfold/resources

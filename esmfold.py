@@ -20,3 +20,4 @@ def esmfold(sequence : str):
 
 sequence = "MKTVRQERLKSIVRILERSKEPVSGAQLAEELSVSRQVIVQDIAYLRSLGYNIVATPRGYVLAGG"
 esmfold(sequence);
+
