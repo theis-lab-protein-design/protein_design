@@ -1,14 +1,17 @@
 git submodule update --init --recursive
-if ! command -v mamba &> /dev/null
-then
-    echo "Mamba is not installed. Please install Mamba to continue."
-    exit 1
-fi
+# # if ! command -v mamba &> /dev/null
+# # then
+# #     echo "Mamba is not installed. Please install Mamba to continue."
+# #     exit 1
+# # fi
 
 
-mamba create -y -n protein_design_env python=3.9
-mamba env update -n protein_design_env --file environment3.yml
-mamba activate protein_design_env
+mamba create -y -n protein-design-env python=3.9
+mamba env update -n protein-design-env --file environment3.yml
+
+CONDA_BASE=$(conda info --base)
+source $CONDA_BASE/etc/profile.d/conda.sh
+conda activate protein-design-env
 pip install -e ./modules/openfold
 pip install -e ./modules/ESM
 
