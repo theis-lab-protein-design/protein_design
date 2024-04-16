@@ -1,4 +1,4 @@
-name: leonoviny_env
+name: protein-design-env
 channels:
   - conda-forge
   - bioconda
@@ -173,7 +173,7 @@ dependencies:
       - werkzeug==3.0.2
       - yarl==1.9.4
       - zipp==3.18.1
-variables:
-  CUTLASS_PATH: /nfs/homedirs/biroscak/leonoviny/modules/openfold/cutlass
-  KMP_AFFINITY: none
-prefix: /nfs/homedirs/biroscak/miniconda3/envs/leonoviny_env
+# variables:
+#   CUTLASS_PATH: /nfs/homedirs/biroscak/leonoviny/modules/openfold/cutlass
+#   KMP_AFFINITY: none
+# prefix: /nfs/homedirs/biroscak/miniconda3/envs/leonoviny_env
