@@ -111,6 +111,8 @@ dependencies:
   - xz=5.2.6=h166bdaf_0
   - yaml=0.2.5=h7f98852_2
   - zstd=1.5.5=hfc55251_0
+  - ipykernel
+  - jupyterlab
   - pip:
       - absl-py==2.1.0
       - aiohttp==3.9.3
