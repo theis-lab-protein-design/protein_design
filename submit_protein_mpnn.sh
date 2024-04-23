@@ -8,12 +8,9 @@
 #SBATCH --cpus-per-task=2
 #SBATCH -o "./outputs/openfold_slurm-%j.out"
 
+folder_with_pdbs="./example_outputs/C8/pdbs"
 
-source activate mlfold
-
-folder_with_pdbs="./modules/ProteinMPNN/inputs/PDB_homooligomers/pdbs/"
-
-output_dir="./outputs/example_6_outputs"
+output_dir="./example_outputs/proteinmpnn"
 if [ ! -d $output_dir ]
 then
     mkdir -p $output_dir
