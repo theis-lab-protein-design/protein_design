@@ -42,7 +42,7 @@ def parse_and_extract(input_file, output_folder=None, overwrite=False, add_monom
             output_folder = os.path.dirname(input_file)
         folder = Path(output_folder)
         # create folder if it does not exist
-        output_file = folder / "homomer" / f"best_homomer_{input_file_name}.fasta"
+        output_file = folder / "homomer" / f"{input_file_name}.fasta"
         output_file.parent.mkdir(parents=True, exist_ok=True)
 
         if not overwrite:
@@ -59,23 +59,23 @@ def parse_and_extract(input_file, output_folder=None, overwrite=False, add_monom
         )[:n_seqs]
         for i, seq_desc in enumerate(top_sequences_desc):
             score = seq_desc.split("score=")[1].split(",")[0]
-            meta_data = {"seq_name": seq_name, "score": score}
+            meta_data = {"seq_name": f"{seq_name}_{i}", "score": score}
 
             idx = (np.where(np.array(seqs) == np.array(seq_desc))[0] + 1)[0]
             best_seqs = seqs[idx].split("/")
 
             # Write the best sequence to the output file
-            output_file = folder / "homomer" / f"best_homomer_{input_file_name}_{i}.fasta"
+            output_file = folder / "homomer" / f"{input_file_name}_{i}.fasta"
             write_fasta_file(best_seqs, output_file, meta_data=meta_data)
             if add_monomer:
-                output_file = folder / "monomer" / f"best_monomer_{input_file_name}_{i}.fasta"
+                output_file = folder / "monomer" / f"{input_file_name}_{i}.fasta"
                 output_file.parent.mkdir(parents=True, exist_ok=True)
                 if not overwrite:
                     check_path(output_file)
                 write_fasta_file(best_seqs, output_file, meta_data=meta_data, stop_after=1)
 
             if add_trimer:
-                output_file = folder / "trimer" / f"best_trimer_{input_file_name}_{i}.fasta"
+                output_file = folder / "trimer" / f"{input_file_name}_{i}.fasta"
                 output_file.parent.mkdir(parents=True, exist_ok=True)
                 if not overwrite:
                     check_path(output_file)
