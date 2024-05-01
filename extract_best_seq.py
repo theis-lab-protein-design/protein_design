@@ -25,11 +25,11 @@ def write_fasta_file(seqs, output_file, meta_data: dict = None, stop_after=None)
             if i == stop_after:
                 break
             # convert i to captial letter
-            f.write(f"{meta_data['seq_name']}-{chr(i + 65)} | score={meta_data['score']}" + "\n")
+            f.write(f"{meta_data['seq_name']}_{chr(i + 65)} | score={meta_data['score']}" + "\n")
             f.write(f"{seq}\n")
 
 
-def parse_and_extract(input_file, output_folder=None, overwrite=False, add_monomer=True, add_trimer=True, n_seqs=1):
+def parse_and_extract(input_file, output_folder=None, overwrite=False, add_monomer=False, add_trimer=True, n_seqs=1):
     try:
         with open(input_file, "r") as f:
             lines = f.readlines()

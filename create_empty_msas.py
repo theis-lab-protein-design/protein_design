@@ -1,6 +1,6 @@
+import argparse
 import os
 from pathlib import Path
-import argparse
 
 
 def read_fasta(fasta_file):
@@ -26,9 +26,11 @@ def read_fasta(fasta_file):
 
 def create_directory_structure(base_dir, seq_name, sequence_entries):
     """Creates directories for each sequence in the list"""
-    path = os.path.join(base_dir, seq_name, "msa")
+    # path = os.path.join(base_dir, seq_name, "msa")
     for identifier, _, _ in sequence_entries:
-        sub_dir = os.path.join(path, identifier.split("-")[-1])
+        # sub_dir = os.path.join(path, identifier.split("-")[-1])
+        path = os.path.join(base_dir, identifier, "msa")
+        sub_dir = path
         os.makedirs(sub_dir, exist_ok=True)
         yield sub_dir, identifier
 
@@ -56,6 +58,8 @@ def main(fasta_dir, output_dir):
         seq_name = fasta_file.stem
         fasta_entries = read_fasta(fasta_file)
         for directory, identifier in create_directory_structure(output_dir, seq_name, fasta_entries):
+            if Path(directory).exists():
+                continue
             sequence, comment = next((seq, com) for id_seq, seq, com in fasta_entries if id_seq == identifier)
             write_a3m_file(directory, identifier, sequence, comment)
             write_sto_file(directory, identifier, sequence, comment, "mgnify_hits.sto")

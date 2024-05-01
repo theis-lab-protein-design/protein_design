@@ -74,7 +74,7 @@ def run_prediction(
         logging.warning("The model is being run on CPU. Consider specifying --model_device for better performance.")
     parser = argparse.ArgumentParser()
     add_data_args(parser)
-    _args = parser.parse_args()
+    _args = parser.parse_known_args()[0]
     # combine args and _args namespaces
     _args = vars(_args)
 
@@ -85,27 +85,27 @@ def run_prediction(
     run_pretrained_openfold(args)
 
 
-# Setup environment variables and paths
+if __name__ == "__main__":
+    # Setup environment variables and paths
 
-base_path = "/nfs/homedirs/hetzell/code/protein_design"
-# fasta_dir = os.path.join(base_path, "example_outputs/proteinmpnn/seqs_best/trimer_linker")
-# output_dir = os.path.join(base_path, "example_outputs/openfold_output_trimer_linker")
-fasta_dir = os.path.join(base_path, "example_outputs/linker_test/seq")
-output_dir = os.path.join(base_path, "example_outputs/openfold_output_trimer_linker")
-alignments_dir = os.path.join(output_dir, "alignments")
+    base_path = "/nfs/homedirs/hetzell/code/protein_design"
+    # fasta_dir = os.path.join(base_path, "example_outputs/proteinmpnn/seqs_best/trimer_linker")
+    # output_dir = os.path.join(base_path, "example_outputs/openfold_output_trimer_linker")
+    fasta_dir = os.path.join(base_path, "example_outputs/linker_test/seq")
+    output_dir = os.path.join(base_path, "example_outputs/openfold_output_trimer_linker")
+    alignments_dir = os.path.join(output_dir, "alignments")
 
-# Assuming create_empty_msas.py has been adjusted to provide a callable function
-create_empty_msas(fasta_dir=fasta_dir, output_dir=alignments_dir)
+    # Assuming create_empty_msas.py has been adjusted to provide a callable function
+    create_empty_msas(fasta_dir=fasta_dir, output_dir=alignments_dir)
 
-# Assuming run_pretrained_openfold.py has been adapted to include callable functions
-args = dict(
-    fasta_dir=fasta_dir,
-    use_precomputed_alignments=alignments_dir,
-    config_preset="model_1",
-    model_device="cuda:0",
-    output_dir=output_dir,
-)
+    # Assuming run_pretrained_openfold.py has been adapted to include callable functions
+    args = dict(
+        fasta_dir=fasta_dir,
+        use_precomputed_alignments=alignments_dir,
+        config_preset="model_1",
+        model_device="cuda:0",
+        output_dir=output_dir,
+    )
 
-
-# Example of calling the function
-run_prediction(**args)
+    # Example of calling the function
+    run_prediction(**args)
