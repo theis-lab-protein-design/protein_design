@@ -7,11 +7,8 @@ fi
 
 
 mamba create -y -n protein_design_env python=3.9
-mamba env update -n protein_design_env --file environment3.yml
+mamba env update -n protein_design_env --file environment.yml
 mamba activate protein_design_env
-pip install pandas
-pip install tqdm
-pip install hydra-core
 # pip install -e ./modules/openfold
 # pip install -e ./modules/ESM
 

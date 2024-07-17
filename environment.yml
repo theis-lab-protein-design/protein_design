@@ -1,4 +1,4 @@
-name: leonoviny_env
+name: protein_design_env 
 channels:
   - conda-forge
   - bioconda
@@ -17,6 +17,10 @@ dependencies:
   - bioconda::kalign2==2.04
   - pytorch::pytorch=1.12.*
   - dglteam::dgl-cuda11.3
+  - conda-forge::ipywidgets=7.7.2
+  - conda-forge::nglview
+  - conda-forge::omegaconf
+  - conda-forge::pandas
   - pip:
       - e3nn==0.3.3
       - biopython==1.79
