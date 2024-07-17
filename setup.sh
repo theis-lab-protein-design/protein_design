@@ -9,8 +9,11 @@ fi
 mamba create -y -n protein_design_env python=3.9
 mamba env update -n protein_design_env --file environment3.yml
 mamba activate protein_design_env
-pip install -e ./modules/openfold
-pip install -e ./modules/ESM
+pip install pandas
+pip install tqdm
+pip install hydra-core
+# pip install -e ./modules/openfold
+# pip install -e ./modules/ESM
 
 
 #RF diffusion setup
@@ -23,4 +26,4 @@ pip install -e .
 cd ../..
 
 # bash scripts/download_alphafold_dbs.sh data/
-bash scripts/download_openfold_params.sh openfold/resources
+# bash scripts/download_openfold_params.sh openfold/resources
