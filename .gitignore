@@ -2,3 +2,4 @@ example_outputs/*
 outputs/*
 modules/openfold/lib/conda/*
 *.pyc
+np_dgrams*
