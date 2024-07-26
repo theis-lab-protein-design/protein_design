@@ -3,3 +3,4 @@ outputs/*
 modules/openfold/lib/conda/*
 *.pyc
 np_dgrams*
+.ipynb_checkpoints/*
