@@ -20,9 +20,9 @@ source $CONDA_BASE/etc/profile.d/conda.sh
 conda activate protein-design-env
 
 BASE_PATH=/nfs/homedirs/hetzell/code/protein_design
-FASTA_DIR=$BASE_PATH/example_outputs/30Apr24_looping/protein_mpnn/seqs_best/homomer
-# FASTA_DIR=$BASE_PATH/example_outputs/30Apr24_looping/protein_mpnn/seqs_best/trimer_linker
-OUTPUT_DIR=$BASE_PATH/example_outputs/30Apr24_looping
+FASTA_DIR=$BASE_PATH/example_outputs/proteinmpnn/seqs_best/homomer
+# FASTA_DIR=$BASE_PATH/example_outputs/01May24_looping/protein_mpnn/seqs_best/trimer_linker
+OUTPUT_DIR=$BASE_PATH/example_outputs/
 
 python $BASE_PATH/run_openfold.py \
     --fasta_dir $FASTA_DIR \
