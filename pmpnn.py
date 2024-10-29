@@ -3,7 +3,7 @@ import os
 import subprocess
 
 
-def run_processes(input_path, output_dir, symmetry=True):
+def run_processes(input_path, output_dir, symmetry=True, seqs=10):
     """
     Run subprocesses to process PDB files and run a prediction model.
 
@@ -56,13 +56,13 @@ def run_processes(input_path, output_dir, symmetry=True):
                 "--out_folder",
                 output_dir,
                 "--num_seq_per_target",
-                "10",
+                f"{seqs}",
                 "--sampling_temp",
                 "0.2",
                 "--seed",
                 "37",
                 "--batch_size",
-                "10",
+                f"{min(seqs,10)}",
             ]
         )
     else:
@@ -76,18 +76,18 @@ def run_processes(input_path, output_dir, symmetry=True):
                 "--out_folder",
                 output_dir,
                 "--num_seq_per_target",
-                "400",
+                f"{seqs}",
                 "--sampling_temp",
                 "0.2",
                 "--seed",
                 "37",
                 "--batch_size",
-                "10",
+                f"{min(seqs,10)}",
             ]
         )
 
 
-def main(input_path, output_path, symmetry=True):
+def main(input_path, output_path, symmetry=True, seqs=10):
     """
     Main function to process PDB files and predict using a machine learning model.
 
@@ -95,14 +95,15 @@ def main(input_path, output_path, symmetry=True):
     input_path (str): Directory containing the input PDB files.
     output_path (str): Directory where the outputs will be saved.
     """
-    run_processes(input_path, output_path, symmetry=symmetry)
+    run_processes(input_path, output_path, symmetry=symmetry, seqs=seqs)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process PDB files and predict outcomes.")
     parser.add_argument("input_path", type=str, help="Directory containing the input PDB files.")
     parser.add_argument("output_path", type=str, help="Directory where the outputs will be saved.")
-    parser.add_argument("symmetry", type=bool, help="Directory where the outputs will be saved.", default=True)
+    parser.add_argument("symmetry", type=bool, help="Whether pdb is symmetric protein or not", default=True)
+    parser.add_argument("seqs", type=int, help="Number of generated seqs per pdb.", default=10)
 
     args = parser.parse_args()
 
